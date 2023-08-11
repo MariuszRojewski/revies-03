@@ -2,6 +2,8 @@ import React from 'react';
 import people from "./data";
 import { FaChevronLeft, FaChevronRight, FaQuoteRight } from 'react-icons/fa'
 
+// Jest jeszcze fajne prosta opcja z użyciem reszty  z dzielenia.
+
 const App = () => {
   const [index, setIndex] = React.useState(0);
   const { name, job, image, text } = people[index];
@@ -46,6 +48,11 @@ const App = () => {
     })
   }
 
+  const randomPerson = () => {
+    const randomNumber = Math.floor(Math.random() * people.length)
+    setIndex(randomNumber);
+  }
+
   return (
     <main>
       <article className="review">
@@ -56,21 +63,27 @@ const App = () => {
         <h4 className="author">{name}</h4>
         <p className="job">{job}</p>
         <p className="info">{text}</p>
+        <div className='btn-container'>
+          <button 
+            className='prev-btn' 
+            onClick={prevPerson}
+          >
+            <FaChevronLeft />
+          </button>
+          <button 
+            className='next-btn' 
+            onClick={nextPerson}
+          >
+            <FaChevronRight />
+          </button>
+        </div>
       </article>
-      <div className='btn-container'>
-        <button 
-          className='prev-btn' 
-          onClick={prevPerson}
-        >
-          <FaChevronLeft />
-        </button>
-        <button 
-          className='next-btn' 
-          onClick={nextPerson}
-        >
-          <FaChevronRight />
-        </button>
-      </div>
+      <button 
+        className='btn btn-hipster'
+        onClick={randomPerson}
+      >
+        Suprise Me
+      </button>
     </main>
   );
 };
