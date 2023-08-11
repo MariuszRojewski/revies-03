@@ -12,7 +12,6 @@ const App = () => {
       if(number > people.length -1) {
         return 0
       } 
-
       if(number < 0) {
         return people.length -1;
       }
